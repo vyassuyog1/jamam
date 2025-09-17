@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shruti Private Limited</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(180deg, #6a5af9, #836fff);
+      color: white;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      background-color: white;
+      color: black;
+      font-weight: bold;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: black;
+      font-weight: normal;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #6a5af9;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 100px 20px 40px;
+    }
+
+    h2 {
+      margin: 10px 0;
+      font-size: 32px;
+    }
+
+    h2 span {
+      color: #FFD700;
+    }
+
+    p {
+      margin: 10px 0 30px;
+      font-size: 16px;
+    }
+
+    .button {
+      display: block;
+      width: 220px;
+      padding: 12px;
+      margin: 10px auto;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    .primary {
+      background-color: white;
+      color: #2563eb;
+      border: none;
+      font-weight: bold;
+    }
+
+    .primary:hover {
+      background-color: #f3f4f6;
+    }
+
+    .secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+
+    .secondary:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div>Shruti Private Limited</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="features.html">Features</a>
+    </nav>
+  </header>
+
+  <!-- Home Section -->
+  <main>
+    <p>Welcome to</p>
+    <h2>Shruti <span>Private Limited</span></h2>
+    <p>Delivering happiness since 18 September 2003</p>
+
+    <a href="#" class="button primary">Get Started</a>
+    <a href="features.html" class="button secondary">Learn More</a>
+  </main>
+</body>
+</html>
