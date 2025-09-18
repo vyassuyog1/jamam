@@ -47,7 +47,7 @@
 
     /* Video */
     .video-container { position: relative; z-index: 10; display: flex; justify-content: center; align-items: center; height: 100vh; }
-    iframe { border-radius: 12px; box-shadow: 0 0 20px rgba(0,0,0,0.3); }
+    video { border-radius: 12px; box-shadow: 0 0 20px rgba(0,0,0,0.3); }
 
     /* Navbar (hidden at first) */
     nav { 
@@ -94,8 +94,10 @@
 
   <!-- Video -->
   <div class="video-container">
-    <iframe id="birthdayVideo" width="700" height="400" src="https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1" 
-      title="Birthday Video" frameborder="0" allowfullscreen></iframe>
+    <video id="birthdayVideo" width="700" height="400" controls>
+      <source src="assets/videos/birthday.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
   </div>
 
   <!-- Doors -->
@@ -106,15 +108,15 @@
   <div class="ribbon" id="ribbon"></div>
 
   <!-- Navbar -->
-  <nav class="bg-white shadow-md p-4">
-    <ul class="flex justify-center space-x-8 font-semibold text-gray-700">
-      <li><a href="index.html" class="hover:text-pink-600">Home</a></li>
-      <li><a href="features.html" class="hover:text-pink-600">Features</a></li>
-      <li><a href="milestones.html" class="hover:text-pink-600">Milestones</a></li>
-      <li><a href="memories.html" class="hover:text-pink-600">Memories</a></li>
-      <li><a href="gallery.html" class="hover:text-pink-600">Gallery</a></li>
-      <li><a href="about.html" class="hover:text-pink-600">About</a></li>
-      <li><a href="contact.html" class="hover:text-pink-600">Contact</a></li>
+  <nav id="navbar">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="features.html">Features</a></li>
+      <li><a href="milestones.html">Milestones</a></li>
+      <li><a href="memories.html">Memories</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
 
@@ -128,23 +130,11 @@
       }, 1500);
     };
 
-    // Video API to detect end
-    function onYouTubeIframeAPIReady() {
-      const player = new YT.Player('birthdayVideo', {
-        events: {
-          'onStateChange': function(event) {
-            if (event.data === YT.PlayerState.ENDED) {
-              document.getElementById('navbar').style.display = 'flex';
-            }
-          }
-        }
-      });
-    }
-
-    // Load YouTube API
-    const tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    document.body.appendChild(tag);
+    // Show navbar after video ends
+    const video = document.getElementById('birthdayVideo');
+    video.addEventListener('ended', () => {
+      document.getElementById('navbar').style.display = 'flex';
+    });
   </script>
 
 </body>
