@@ -5,133 +5,73 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Our Services - Shruti Private Limited</title>
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f9fafb;
-      color: black;
-      text-align: center;
+    body { margin: 0; font-family: Arial, sans-serif; background: #f9fafb; color: black; text-align: center; }
+
+    header { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      padding: 15px 20px; 
+      background-color: white; 
+      color: black; 
+      font-weight: bold; 
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      z-index: 1000; 
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
     }
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 20px;
-      background-color: white;
-      color: black;
-      font-weight: bold;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    nav a { 
+      margin-left: 20px; 
+      text-decoration: none; 
+      color: black; 
+      font-weight: normal; 
+      transition: 0.3s; 
     }
+    nav a:hover { color: #6a5af9; }
 
-    nav a {
-      margin-left: 20px;
-      text-decoration: none;
-      color: black;
-      font-weight: normal;
-      transition: 0.3s;
+    section { padding: 100px 20px 60px; max-width: 800px; margin: auto; position: relative; }
+    section h2 { font-size: 28px; margin-bottom: 10px; }
+    section p { font-size: 16px; margin-bottom: 40px; color: #555; }
+
+    .services { position: relative; height: 350px; }
+    .card { 
+      padding: 25px; 
+      border-radius: 12px; 
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.1); 
+      text-align: center; 
+      position: absolute; 
+      top: 0; left: 0; right: 0; 
+      opacity: 0; 
+      transition: opacity 0.6s ease; 
     }
+    .card.active { opacity: 1; position: relative; }
+    .card h3 { margin: 15px 0 10px; font-size: 20px; }
+    .card em { display: block; margin-bottom: 10px; color: #444; }
+    .card p { font-size: 14px; color: #333; margin-bottom: 10px; }
+    .card strong { display: block; margin-top: 10px; }
 
-    nav a:hover {
-      color: #6a5af9;
-    }
-
-    section {
-      padding: 100px 20px 60px;
-      max-width: 800px;
-      margin: auto;
-      position: relative;
-    }
-
-    section h2 {
-      font-size: 28px;
-      margin-bottom: 10px;
-    }
-
-    section p {
-      font-size: 16px;
-      margin-bottom: 40px;
-      color: #555;
-    }
-
-    .services {
-      position: relative;
-      height: 350px;
-    }
-
-    .card {
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
-      text-align: center;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      opacity: 0;
-      transition: opacity 0.6s ease;
-    }
-
-    .card.active {
-      opacity: 1;
-      position: relative;
-    }
-
-    .card h3 {
-      margin: 15px 0 10px;
-      font-size: 20px;
-    }
-
-    .card em {
-      display: block;
-      margin-bottom: 10px;
-      color: #444;
-    }
-
-    .card p {
-      font-size: 14px;
-      color: #333;
-      margin-bottom: 10px;
-    }
-
-    .card strong {
-      display: block;
-      margin-top: 10px;
-    }
-
-    /* Card Colors */
     .pink { background: #ffe6eb; }
     .blue { background: #e6ecff; }
     .green { background: #e6ffed; }
     .yellow { background: #fff6e6; }
 
-    .icon {
-      font-size: 24px;
-      display: inline-block;
-      background: white;
-      border-radius: 50%;
-      padding: 10px;
-      margin-bottom: 10px;
-    }
+    .icon { font-size: 24px; display: inline-block; background: white; border-radius: 50%; padding: 10px; margin-bottom: 10px; }
 
-    /* Navigation buttons */
-    .nav-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: #6a5af9;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      cursor: pointer;
-      border-radius: 50%;
-      font-size: 18px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    .nav-btn { 
+      position: absolute; 
+      top: 50%; 
+      transform: translateY(-50%); 
+      background: #6a5af9; 
+      color: white; 
+      border: none; 
+      padding: 10px 15px; 
+      cursor: pointer; 
+      border-radius: 50%; 
+      font-size: 18px; 
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2); 
     }
     .prev { left: -50px; }
     .next { right: -50px; }
@@ -144,6 +84,10 @@
     <nav>
       <a href="index.html">Home</a>
       <a href="features.html">Features</a>
+      <a href="milestones.html">Milestones</a>
+      <a href="memories.html">Memories</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
     </nav>
   </header>
 

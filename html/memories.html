@@ -19,15 +19,34 @@
       color: white;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 2.2em;
-    }
+    header h1 { margin: 0; font-size: 2.2em; }
+    header p { margin-top: 8px; font-size: 1.05em; color: rgba(255,255,255,0.9); }
 
-    header p {
-      margin-top: 8px;
-      font-size: 1.05em;
-      color: rgba(255,255,255,0.9);
+    /* Navbar */
+    nav {
+      background: white;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-weight: 600;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #2575fc;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: #6a11cb;
     }
 
     .timeline {
@@ -49,13 +68,7 @@
       border-radius: 10px;
     }
 
-    .container {
-      padding: 20px 40px;
-      position: relative;
-      width: 50%;
-      box-sizing: border-box;
-    }
-
+    .container { padding: 20px 40px; position: relative; width: 50%; box-sizing: border-box; }
     .container.left { left: 0; }
     .container.right { left: 50%; }
 
@@ -85,71 +98,48 @@
     }
     .container.right::before { left: -9px; right: auto; }
 
-    h2 {
-      margin-top: 0;
-      font-size: 1.3em;
-      color: #333;
-    }
-    h4 {
-      margin: 6px 0 12px;
-      font-weight: normal;
-      color: #888;
-      font-size: 0.95em;
-    }
-    p {
-      margin: 0;
-      line-height: 1.6;
-      color: #555;
-      white-space: pre-wrap;
-    }
+    h2 { margin-top: 0; font-size: 1.3em; color: #333; }
+    h4 { margin: 6px 0 12px; font-weight: normal; color: #888; font-size: 0.95em; }
+    p { margin: 0; line-height: 1.6; color: #555; white-space: pre-wrap; }
 
     /* Color accents cycle */
-    .memory-1 .content { border-left: 6px solid #ff6a88; }
-    .memory-1::before { border-color: #ff6a88; }
-    .memory-2 .content { border-left: 6px solid #f7971e; }
-    .memory-2::before { border-color: #f7971e; }
-    .memory-3 .content { border-left: 6px solid #43cea2; }
-    .memory-3::before { border-color: #43cea2; }
-    .memory-4 .content { border-left: 6px solid #3a1c71; }
-    .memory-4::before { border-color: #3a1c71; }
-    .memory-5 .content { border-left: 6px solid #11998e; }
-    .memory-5::before { border-color: #11998e; }
-    .memory-6 .content { border-left: 6px solid #ff512f; }
-    .memory-6::before { border-color: #ff512f; }
-    .memory-7 .content { border-left: 6px solid #6a11cb; }
-    .memory-7::before { border-color: #6a11cb; }
-    .memory-8 .content { border-left: 6px solid #e94057; }
-    .memory-8::before { border-color: #e94057; }
-    .memory-9 .content { border-left: 6px solid #4776e6; }
-    .memory-9::before { border-color: #4776e6; }
-    .memory-10 .content { border-left: 6px solid #ff7e5f; }
-    .memory-10::before { border-color: #ff7e5f; }
+    .memory-1 .content { border-left: 6px solid #ff6a88; } .memory-1::before { border-color: #ff6a88; }
+    .memory-2 .content { border-left: 6px solid #f7971e; } .memory-2::before { border-color: #f7971e; }
+    .memory-3 .content { border-left: 6px solid #43cea2; } .memory-3::before { border-color: #43cea2; }
+    .memory-4 .content { border-left: 6px solid #3a1c71; } .memory-4::before { border-color: #3a1c71; }
+    .memory-5 .content { border-left: 6px solid #11998e; } .memory-5::before { border-color: #11998e; }
+    .memory-6 .content { border-left: 6px solid #ff512f; } .memory-6::before { border-color: #ff512f; }
+    .memory-7 .content { border-left: 6px solid #6a11cb; } .memory-7::before { border-color: #6a11cb; }
+    .memory-8 .content { border-left: 6px solid #e94057; } .memory-8::before { border-color: #e94057; }
+    .memory-9 .content { border-left: 6px solid #4776e6; } .memory-9::before { border-color: #4776e6; }
+    .memory-10 .content { border-left: 6px solid #ff7e5f; } .memory-10::before { border-color: #ff7e5f; }
 
     /* Responsive accordion */
     @media screen and (max-width: 768px) {
       .timeline::after { display: none; }
-      .container {
-        width: 100%;
-        padding: 0;
-        margin-bottom: 15px;
-      }
+      .container { width: 100%; padding: 0; margin-bottom: 15px; }
       .container.left, .container.right { left: 0; }
       .container::before { display: none; }
-      .content {
-        margin: 0;
-        cursor: pointer;
-      }
-      .content h2 {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
+      .content { margin: 0; cursor: pointer; }
+      .content h2 { display: flex; justify-content: space-between; align-items: center; }
       .content p { display: none; }
       .content.active p { display: block; margin-top: 10px; }
     }
   </style>
 </head>
 <body>
+
+  <!-- Navbar -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="features.html">Features</a></li>
+      <li><a href="milestones.html">Milestones</a></li>
+      <li><a href="memories.html">Memories</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
 
   <header>
     <h1>The Beautiful Memories She Created in My Life</h1>
