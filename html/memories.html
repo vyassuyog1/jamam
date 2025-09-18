@@ -3,180 +3,282 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Memories</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Beautiful Memories</title>
   <style>
     body {
-      background: #f3f4f6;
+      font-family: Arial, sans-serif;
+      background: #f5f6fa;
+      margin: 0;
+      padding: 0;
     }
+
+    header {
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: white;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.2em;
+    }
+
+    header p {
+      margin-top: 8px;
+      font-size: 1.05em;
+      color: rgba(255,255,255,0.9);
+    }
+
     .timeline {
       position: relative;
-      margin: 50px auto;
-      padding: 20px 0;
-      width: 90%;
-      max-width: 800px;
+      max-width: 1000px;
+      margin: 40px auto 80px;
+      padding: 0 20px;
     }
+
     .timeline::after {
       content: '';
       position: absolute;
-      width: 4px;
-      background: linear-gradient(to bottom, #ec4899, #8b5cf6, #3b82f6, #10b981);
+      width: 6px;
+      background: linear-gradient(180deg, #ff6a88, #a18cd1);
       top: 0;
       bottom: 0;
       left: 50%;
-      margin-left: -2px;
+      margin-left: -3px;
+      border-radius: 10px;
     }
-    .timeline-item {
-      padding: 20px;
+
+    .container {
+      padding: 20px 40px;
       position: relative;
       width: 50%;
+      box-sizing: border-box;
     }
-    .timeline-item:nth-child(odd) {
-      left: 0;
-    }
-    .timeline-item:nth-child(even) {
-      left: 50%;
-    }
-    .timeline-dot {
-      width: 16px;
-      height: 16px;
+
+    .container.left { left: 0; }
+    .container.right { left: 50%; }
+
+    .content {
+      padding: 18px;
       background: white;
-      border: 4px solid #ec4899;
-      border-radius: 50%;
-      position: absolute;
-      top: 30px;
-      right: -8px;
-      z-index: 10;
+      position: relative;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: 0.3s;
     }
-    .timeline-item:nth-child(even) .timeline-dot {
-      left: -8px;
+
+    .container.left .content { margin-right: 30px; }
+    .container.right .content { margin-left: 30px; }
+
+    .container::before {
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      right: -9px;
+      background: white;
+      border: 4px solid;
+      top: 24px;
+      border-radius: 50%;
+      z-index: 1;
+    }
+    .container.right::before { left: -9px; right: auto; }
+
+    h2 {
+      margin-top: 0;
+      font-size: 1.3em;
+      color: #333;
+    }
+    h4 {
+      margin: 6px 0 12px;
+      font-weight: normal;
+      color: #888;
+      font-size: 0.95em;
+    }
+    p {
+      margin: 0;
+      line-height: 1.6;
+      color: #555;
+      white-space: pre-wrap;
+    }
+
+    /* Color accents cycle */
+    .memory-1 .content { border-left: 6px solid #ff6a88; }
+    .memory-1::before { border-color: #ff6a88; }
+    .memory-2 .content { border-left: 6px solid #f7971e; }
+    .memory-2::before { border-color: #f7971e; }
+    .memory-3 .content { border-left: 6px solid #43cea2; }
+    .memory-3::before { border-color: #43cea2; }
+    .memory-4 .content { border-left: 6px solid #3a1c71; }
+    .memory-4::before { border-color: #3a1c71; }
+    .memory-5 .content { border-left: 6px solid #11998e; }
+    .memory-5::before { border-color: #11998e; }
+    .memory-6 .content { border-left: 6px solid #ff512f; }
+    .memory-6::before { border-color: #ff512f; }
+    .memory-7 .content { border-left: 6px solid #6a11cb; }
+    .memory-7::before { border-color: #6a11cb; }
+    .memory-8 .content { border-left: 6px solid #e94057; }
+    .memory-8::before { border-color: #e94057; }
+    .memory-9 .content { border-left: 6px solid #4776e6; }
+    .memory-9::before { border-color: #4776e6; }
+    .memory-10 .content { border-left: 6px solid #ff7e5f; }
+    .memory-10::before { border-color: #ff7e5f; }
+
+    /* Responsive accordion */
+    @media screen and (max-width: 768px) {
+      .timeline::after { display: none; }
+      .container {
+        width: 100%;
+        padding: 0;
+        margin-bottom: 15px;
+      }
+      .container.left, .container.right { left: 0; }
+      .container::before { display: none; }
+      .content {
+        margin: 0;
+        cursor: pointer;
+      }
+      .content h2 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .content p { display: none; }
+      .content.active p { display: block; margin-top: 10px; }
     }
   </style>
 </head>
-<body class="font-sans text-gray-800">
+<body>
 
-  <!-- Header -->
-  <header class="text-center py-10">
-    <h1 class="text-3xl font-bold">The Beautiful Memories She Created in My Life</h1>
-    <p class="text-gray-600 mt-2">Cherishing the precious moments that have filled our journey with joy and love</p>
+  <header>
+    <h1>The Beautiful Memories She Created in My Life</h1>
+    <p>Cherishing the precious moments that have filled our journey with joy and love</p>
   </header>
 
-  <!-- Timeline -->
-  <section class="timeline">
+  <div class="timeline">
 
-    <!-- Memory 1 -->
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h3 class="font-bold text-lg">The First Chat</h3>
-        <p class="text-sm text-gray-500">2nd November 2022</p>
-        <p class="mt-2">
-          I so much remember the first chat that we did and that day we chatted around 3 a.m in the night. 
-          At that time I never thought this is a chat that would last now three years to be honest. 
-          That would have been the first and the last beautiful chat of my life.
-        </p>
+    <!-- 1 -->
+    <div class="container left memory-1">
+      <div class="content">
+        <h2>The First Chat</h2>
+        <h4>2nd November 2022</h4>
+        <p>I so much remember the first chat that we did and that day we chatted around 3 a.m in the night.
+        At that time I never thought this is a chat that would last now three years to be honest.
+        That would have been the first and the last beautiful chat of my life.</p>
       </div>
     </div>
 
-    <!-- Memory 2 -->
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h3 class="font-bold text-lg">The First Love You</h3>
-        <p class="text-sm text-gray-500">3rd December 2022</p>
-        <p class="mt-2">
-          That was simply one of the greatest things of my life. The first time when such a soulful person said 
-          3 beautiful, soulful words, my heart was beating fast. It was again around 4-5 am in the morning. 
-          I remember my body was warm and I enjoyed every bit of that feeling.
-        </p>
+    <!-- 2 -->
+    <div class="container right memory-2">
+      <div class="content">
+        <h2>The First Love You</h2>
+        <h4>3rd December 2022</h4>
+        <p>That was simply one of the greatest things of my life. The first time when such a soulful person said 3 beautiful, soulful words, my heart was beating fast. 
+        It was again around 4-5 am in the morning. I remember my body was warm and I enjoyed every bit of that feeling.</p>
       </div>
     </div>
 
-    <!-- Memory 3 -->
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h3 class="font-bold text-lg">Her 1st Birthday</h3>
-        <p class="text-sm text-gray-500">1st April 2023</p>
-        <p class="mt-2">
-          What a beautiful gift she gave on my 1st birthday. Well, there were 2 gifts. 
-          One was a beautiful, beautiful note that she made just innocently like a small child. 
-          And other was such a beautiful mashup of 3 different songs in 3 different languages of 3 different genres. 
-          That was the best gift of my birthday.
-        </p>
+    <!-- 3 -->
+    <div class="container left memory-3">
+      <div class="content">
+        <h2>Her 1st Birthday</h2>
+        <h4>1st April 2023</h4>
+        <p>What a beautiful gift she gave on my 1st birthday. Well, there were 2 gifts. 
+        One was a beautiful, beautiful note that she made just innocently like a small child. 
+        And other was such a beautiful mashup of 3 different songs in 3 different languages of 3 different genres. 
+        That was the best gift of my birthday.</p>
       </div>
     </div>
 
-    <!-- Memory 4 -->
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h3 class="font-bold text-lg">Fourth Beautiful Memory</h3>
-        <p class="text-sm text-gray-500">Add your special date here</p>
-        <p class="mt-2">Add description here...</p>
+    <!-- 4 -->
+    <div class="container right memory-4">
+      <div class="content">
+        <h2>The First Video Call</h2>
+        <h4>30th June 2023</h4>
+        <p>I so much remember her first video call. We both were a little bit shy because it was our first video call but as well as so much excited from the inside. 
+        And then the beautiful face came in front of my eyes through the small screen of my phone. 
+        Though the screen was small the beauty was immensely large. She had a beautiful nose ring, a sweet red t-shirt and open hairs and damn she was looking the most beautiful that day.</p>
       </div>
     </div>
 
-    <!-- Memory 5 -->
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h3 class="font-bold text-lg">Fifth Beautiful Memory</h3>
-        <p class="text-sm text-gray-500">Add your special date here</p>
-        <p class="mt-2">Add description here...</p>
+    <!-- 5 -->
+    <div class="container left memory-5">
+      <div class="content">
+        <h2>Her First Birthday</h2>
+        <h4>18th September 2023</h4>
+        <p>This was the birthday for which I was excited most in my life. It was her first birthday and I was excited to gift her as much as things that I can. 
+        I sent her a 30-minute video which described her entire life in a song as well as some beautiful donations that I believe we both contributed. 
+        And again a beautiful video message for her. I enjoyed doing every bit of her gifts.</p>
       </div>
     </div>
 
-    <!-- Memory 6 -->
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h3 class="font-bold text-lg">Sixth Beautiful Memory</h3>
-        <p class="text-sm text-gray-500">Add your special date here</p>
-        <p class="mt-2">Add description here...</p>
+    <!-- 6 -->
+    <div class="container right memory-6">
+      <div class="content">
+        <h2>The Day You Finally Learned Your Scooty</h2>
+        <h4>30th October 2023</h4>
+        <p>Finally the day occurred when you completed your formal training in driving your scooty. 
+        It might be a small thing for me but seeing the happiness on your face made it so big I can't even tell you. 
+        And I thought this is such a big achievement of yours when I saw the smile on your face when you told me that you have finally completed the training of your scooty. 
+        I so much loved that time when you would share me every update about your training.</p>
       </div>
     </div>
 
-    <!-- Memory 7 -->
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h3 class="font-bold text-lg">Seventh Beautiful Memory</h3>
-        <p class="text-sm text-gray-500">Add your special date here</p>
-        <p class="mt-2">Add description here...</p>
+    <!-- 7 -->
+    <div class="container left memory-7">
+      <div class="content">
+        <h2>When You Wore a Saree for Me in Video Call</h2>
+        <h4>24th September 2024</h4>
+        <p>I've always prayed to see you in a saree and oh my god you were looking so so so pretty when you wore a saree in a Maharashtrian style 
+        and you danced so beautifully on all the Lavani songs in the video call. 
+        You were looking as beautiful as and as Maharashtrian as a proper Maharashtrian girl.</p>
       </div>
     </div>
 
-    <!-- Memory 8 -->
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h3 class="font-bold text-lg">Eighth Beautiful Memory</h3>
-        <p class="text-sm text-gray-500">Add your special date here</p>
-        <p class="mt-2">Add description here...</p>
+    <!-- 8 -->
+    <div class="container right memory-8">
+      <div class="content">
+        <h2>The Most Beautiful Visit to Shekau</h2>
+        <h4>23rd March 2024</h4>
+        <p>This is the most beautiful visit of mine to Shekau. I have visited it before but this was the most beautiful visit. 
+        I remember talking to you around 3-4 am in the night from 12 am and describing the beauty, the area, and all of the things that I did there. 
+        And I felt it so great to share that with especially you. I just lost the count of time and I just kept sharing you everything that I had. 
+        And I don't know but I was so happy to share with you. I felt sharing with you is the most special thing that happened that day.</p>
       </div>
     </div>
 
-    <!-- Memory 9 -->
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h3 class="font-bold text-lg">Ninth Beautiful Memory</h3>
-        <p class="text-sm text-gray-500">Add your special date here</p>
-        <p class="mt-2">Add description here...</p>
+    <!-- 9 -->
+    <div class="container left memory-9">
+      <div class="content">
+        <h2>The Day I Thought It Ended</h2>
+        <h4>23rd February 2025</h4>
+        <p>Something bad happened in my life and I thought I lost you permanently. Well, it was my mistake whatever happened but when I realized I might lose you permanently, I honestly tell you I cried for a few nights. 
+        Everyday I would get up and just pray God how can I go back in time so that I don't lose you at least for one more day.</p>
       </div>
     </div>
 
-    <!-- Memory 10 -->
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h3 class="font-bold text-lg">Tenth Beautiful Memory</h3>
-        <p class="text-sm text-gray-500">Add your special date here</p>
-        <p class="mt-2">Add description here...</p>
+    <!-- 10 -->
+    <div class="container right memory-10">
+      <div class="content">
+        <h2>The Day When I Realized We Still Have Time</h2>
+        <h4>26th August 2025</h4>
+        <p>The incident which happened in my life, I threw it out. I overpowered it. I overturned it. Reasons were many but I think that God gave me one more chance to be yours, to make you mine and to be with you for some more time. 
+        I never regret my decision of overturning that incident because even if I get one more day with you, it is a special feeling. It is a special blessing. And for me, even one day, 24 hours count if it's with you.</p>
       </div>
     </div>
 
-  </section>
+  </div>
+
+  <script>
+    // Accordion behavior on mobile
+    if (window.innerWidth <= 768) {
+      document.querySelectorAll('.content').forEach(card => {
+        card.addEventListener('click', () => {
+          card.classList.toggle('active');
+        });
+      });
+    }
+  </script>
 </body>
 </html>
