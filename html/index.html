@@ -5,41 +5,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shruti Private Limited</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    @keyframes float {
+      0% { transform: translate(0, 0); }
+      50% { transform: translate(var(--x), var(--y)); }
+      100% { transform: translate(0, 0); }
+    }
+    .floating-text {
+      position: absolute;
+      opacity: 0.7;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #4b5563;
+      animation: float 8s ease-in-out infinite;
+    }
+  </style>
 </head>
-<body class="bg-gradient-to-r from-blue-400 to-purple-500 text-white">
+<body class="relative bg-gray-50 overflow-hidden">
 
-  <!-- Navbar -->
-  <nav class="bg-white shadow-md p-4 fixed top-0 left-0 w-full z-10">
-    <div class="container mx-auto flex justify-between items-center">
-      <h1 class="text-xl font-bold text-gray-800">Shruti Private Limited</h1>
-      <ul class="flex space-x-6 font-medium text-gray-700">
-        <li><a href="index.html" class="hover:text-purple-600">Home</a></li>
-        <li><a href="features.html" class="hover:text-purple-600">Features</a></li>
-        <li><a href="about.html" class="hover:text-purple-600">About</a></li>
-        <li><a href="contact.html" class="hover:text-purple-600">Contact</a></li>
-        <li><a href="milestones.html" class="hover:text-purple-600">Milestones</a></li>
-        <li><a href="memories.html" class="hover:text-purple-600">Memories</a></li>
-      </ul>
-    </div>
-  </nav>
+  <!-- Floating Love Reasons -->
+  <div class="absolute inset-0">
+    <span class="floating-text" style="top:10%; left:15%; --x:20px; --y:30px;">Her endless kindness</span>
+    <span class="floating-text" style="top:25%; left:70%; --x:-25px; --y:20px;">The way she laughs</span>
+    <span class="floating-text" style="top:50%; left:40%; --x:30px; --y:-20px;">She believes in me</span>
+    <span class="floating-text" style="top:75%; left:20%; --x:-20px; --y:25px;">Her patience</span>
+    <span class="floating-text" style="top:15%; left:55%; --x:15px; --y:-30px;">Her beautiful smile</span>
+    <span class="floating-text" style="top:60%; left:80%; --x:-30px; --y:15px;">She makes me stronger</span>
+    <span class="floating-text" style="top:35%; left:10%; --x:25px; --y:-15px;">Her loving heart</span>
+    <span class="floating-text" style="top:85%; left:50%; --x:-20px; --y:20px;">Her little surprises</span>
+    <span class="floating-text" style="top:40%; left:65%; --x:30px; --y:30px;">She inspires me daily</span>
+    <span class="floating-text" style="top:5%; left:30%; --x:-25px; --y:25px;">She’s my safe place</span>
+  </div>
 
-  <!-- Hero Section -->
-  <section class="flex flex-col items-center justify-center h-screen text-center px-6">
-    <h2 class="text-lg mb-2">Welcome to</h2>
-    <h1 class="text-4xl font-bold">
-      Shruti <span class="text-yellow-400">Private Limited</span>
-    </h1>
-    <p class="mt-4 text-lg">Delivering happiness since 18 September 2003</p>
-
-    <div class="mt-8 space-y-4">
-      <a href="get-started.html" class="block w-48 mx-auto bg-white text-blue-600 font-semibold py-3 rounded-lg shadow hover:bg-gray-100">
-        Get Started
-      </a>
-      <a href="learn-more.html" class="block w-48 mx-auto border-2 border-white py-3 rounded-lg hover:bg-white hover:text-blue-600 font-semibold">
-        Learn More
-      </a>
-    </div>
-  </section>
+  <!-- Main Content -->
+  <div class="relative z-10 flex flex-col items-center justify-center min-h-screen text-center px-6">
+    <h1 class="text-4xl md:text-6xl font-bold text-gray-800">Welcome to Shruti Private Limited</h1>
+    <p class="mt-4 text-lg text-gray-600 max-w-2xl">
+      A beautiful place about the chapter of love in my life.
+    </p>
+    <a href="birthday.html" class="mt-6 px-6 py-3 bg-purple-600 text-white font-semibold rounded-lg shadow-lg hover:bg-purple-700">
+      Get Started
+    </a>
+  </div>
 
 </body>
 </html>
